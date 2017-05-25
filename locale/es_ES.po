@@ -1,0 +1,19 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party.address,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.contact_mechanism,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.identifier,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.party,company:"
+msgid "Company"
+msgstr "Empresa"
