@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule" id="rule_party1">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="['OR', ('company', 'in', Eval('user', {}).get('companies', [])), ('company', '=', None)]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_party"/>
         </record>
@@ -22,7 +22,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule" id="rule_address1">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="['OR', ('company', 'in', Eval('user', {}).get('companies', [])), ('company', '=', None)]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_address"/>
         </record>
@@ -34,7 +34,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule" id="rule_identifier1">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="['OR', ('company', 'in', Eval('user', {}).get('companies', [])), ('company', '=', None)]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_identifier"/>
         </record>
@@ -46,7 +46,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule" id="rule_contact_mechanism1">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="['OR', ('company', 'in', Eval('user', {}).get('companies', [])), ('company', '=', None)]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_contact_mechanism"/>
         </record>

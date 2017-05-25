@@ -12,7 +12,7 @@ __all__ = ['Party', 'Address', 'PartyIdentifier', 'ContactMechanism']
 class Party:
     __name__ = 'party.party'
     __metaclass__ = PoolMeta
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One('company.company', 'Company',
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
@@ -46,7 +46,7 @@ class Party:
 class Address:
     __name__ = 'party.address'
     __metaclass__ = PoolMeta
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One('company.company', 'Company',
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
@@ -80,7 +80,7 @@ class Address:
 class PartyIdentifier:
     __name__ = 'party.identifier'
     __metaclass__ = PoolMeta
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One('company.company', 'Company',
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
@@ -114,7 +114,7 @@ class PartyIdentifier:
 class ContactMechanism:
     __name__ = 'party.contact_mechanism'
     __metaclass__ = PoolMeta
-    company = fields.Many2One('company.company', 'Company', required=True,
+    company = fields.Many2One('company.company', 'Company',
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
