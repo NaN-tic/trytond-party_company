@@ -28,7 +28,3 @@ documentation:
 To use without installation, extract the archive into ``trytond/modules`` with
 the directory name party_company.
 
-Intall module
--------------
-
-First create your company and after you could install party_company module.
