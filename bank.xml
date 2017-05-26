@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="bank">
+        <!-- bank -->
+        <record model="ir.rule.group" id="rule_group_bank">
+            <field name="model" search="[('model', '=', 'bank')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_bank1">
+            <field name="domain"
+                eval="['OR', ('company', 'in', Eval('user', {}).get('companies', [])), ('company', '=', None)]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_bank"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_bank_account">
+            <field name="model" search="[('model', '=', 'bank.account')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_bank_account1">
+            <field name="domain"
+                eval="['OR', ('company', 'in', Eval('user', {}).get('companies', [])), ('company', '=', None)]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_bank_account"/>
+        </record>
+    </data>
+</tryton>

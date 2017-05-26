@@ -15,4 +15,4 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_carrier"/>
         </record>
     </data>
-  </tryton>
+</tryton>

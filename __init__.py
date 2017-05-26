@@ -3,12 +3,15 @@
 # the full copyright notices and license terms.
 from trytond.pool import Pool
 from . import activity
+from . import bank
 from . import carrier
 from . import party
 
 def register():
     Pool.register(
         activity.Activity,
+        bank.Bank,
+        bank.BankAccount,
         carrier.Carrier,
         party.Party,
         party.Address,

@@ -13,7 +13,7 @@ class Carrier:
         'get_company', searcher='search_company_field')
 
     def get_company(self, name):
-        if self.party:
+        if self.party and self.party.company:
             return self.party.company.id
 
     @classmethod

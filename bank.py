@@ -3,11 +3,11 @@
 from trytond.model import fields
 from trytond.pool import PoolMeta
 
-__all__ = ['Activity']
+__all__ = ['Bank', 'BankAccount']
 
 
-class Activity:
-    __name__ = "activity.activity"
+class Bank:
+    __name__ = "bank"
     __metaclass__ = PoolMeta
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'get_company', searcher='search_company_field')
@@ -19,3 +19,18 @@ class Activity:
     @classmethod
     def search_company_field(cls, name, clause):
         return [('party.company',) + tuple(clause[1:])]
+
+
+class BankAccount:
+    __name__ = 'bank.account'
+    __metaclass__ = PoolMeta
+    company = fields.Function(fields.Many2One('company.company', 'Company'),
+        'get_company', searcher='search_company_field')
+
+    def get_company(self, name):
+        if self.bank and self.bank.party.company:
+            return self.bank.party.company.id
+
+    @classmethod
+    def search_company_field(cls, name, clause):
+        return [('bank.party.company',) + tuple(clause[1:])]
