@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="carrier">
+        <!-- carrier -->
+        <record model="ir.rule.group" id="rule_group_carrier">
+            <field name="model" search="[('model', '=', 'carrier')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_carrier1">
+            <field name="domain"
+                eval="['OR', ('company', 'in', Eval('user', {}).get('companies', [])), ('company', '=', None)]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_carrier"/>
+        </record>
+    </data>
+  </tryton>

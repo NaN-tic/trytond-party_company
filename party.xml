@@ -50,5 +50,5 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_contact_mechanism"/>
         </record>
-      </data>
-  </tryton>
+    </data>
+</tryton>
