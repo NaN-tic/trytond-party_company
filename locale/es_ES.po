@@ -2,6 +2,22 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:activity.activity,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:bank,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:bank.account,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:carrier,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:party.address,company:"
 msgid "Company"
 msgstr "Empresa"
