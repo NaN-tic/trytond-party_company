@@ -2,17 +2,17 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
-    <data depends="activity">
-        <!-- activity -->
-        <record model="ir.rule.group" id="rule_group_activity_activity">
-            <field name="model" search="[('model', '=', 'activity.activity')]"/>
+    <data depends="commission">
+        <!-- commission.agent -->
+        <record model="ir.rule.group" id="rule_group_commission_agent">
+            <field name="model" search="[('model', '=', 'commission.agent')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_activity_activity1">
+        <record model="ir.rule" id="rule_commission_agent1">
             <field name="domain"
                 eval="['OR', ('company', 'in', Eval('user', {}).get('companies', [])), ('company', '=', None)]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_activity_activity"/>
+            <field name="rule_group" ref="rule_group_commission_agent"/>
         </record>
     </data>
 </tryton>
