@@ -29,15 +29,25 @@ class PartyCompanyTestCase(ModuleTestCase):
         'Create party company'
         pool = Pool()
         Party = pool.get('party.party')
+        Address = pool.get('party.address')
 
         company = create_company()
         with set_company(company):
-            party2, = Party.create([{
+            party, = Party.create([{
                         'name': 'Party 2',
                         }])
-            self.assert_(party2.id)
-            self.assertNotEqual(party2.company, None)
+            self.assert_(party.id)
+            self.assertNotEqual(party.company, None)
+            address, = Address.create([{
+                        'party': party.id,
+                        'street': 'St sample, 15',
+                        'city': 'City',
+                        }])
+            self.assertEqual(address.company == company, True)
 
+            address1, address2 = Address.search([])
+            self.assertEqual(address1.company, None)
+            self.assertEqual(address2.company == company, True)
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

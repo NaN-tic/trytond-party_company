@@ -2,28 +2,19 @@
 # copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import PoolMeta
+from . import party
 
 __all__ = ['Bank', 'BankAccount']
 
 
-class Bank:
-    __name__ = "bank"
+class Bank(object, party.PartyCompanyMixin):
     __metaclass__ = PoolMeta
-    company = fields.Function(fields.Many2One('company.company', 'Company'),
-        'get_company', searcher='search_company_field')
-
-    def get_company(self, name):
-        if self.party and self.party.company:
-            return self.party.company.id
-
-    @classmethod
-    def search_company_field(cls, name, clause):
-        return [('party.company',) + tuple(clause[1:])]
+    __name__ = "bank"
 
 
 class BankAccount:
-    __name__ = 'bank.account'
     __metaclass__ = PoolMeta
+    __name__ = 'bank.account'
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'get_company', searcher='search_company_field')
 

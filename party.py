@@ -1,6 +1,6 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-from trytond.model import fields, ModelView, ModelSQL
+from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.transaction import Transaction
 from trytond.pyson import If, Eval
@@ -35,13 +35,16 @@ class PartyCompanyMixin:
         return [('party.company',) + tuple(clause[1:])]
 
 
-class Address(ModelSQL, ModelView, PartyCompanyMixin):
+class Address(object, PartyCompanyMixin):
+    __metaclass__ = PoolMeta
     __name__ = 'party.address'
 
 
-class PartyIdentifier(ModelSQL, ModelView, PartyCompanyMixin):
+class PartyIdentifier(object, PartyCompanyMixin):
+    __metaclass__ = PoolMeta
     __name__ = 'party.identifier'
 
 
-class ContactMechanism(ModelSQL, ModelView, PartyCompanyMixin):
+class ContactMechanism(object, PartyCompanyMixin):
+    __metaclass__ = PoolMeta
     __name__ = 'party.contact_mechanism'

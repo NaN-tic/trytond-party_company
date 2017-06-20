@@ -6,6 +6,6 @@ from . import party
 __all__ = ['Agent']
 
 
-class Agent(party.PartyCompanyMixin):
-    __name__ = 'commission.agent'
+class Agent(object, party.PartyCompanyMixin):
     __metaclass__ = PoolMeta
+    __name__ = 'commission.agent'
