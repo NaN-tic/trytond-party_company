@@ -22,7 +22,7 @@ class PartyCompanyTestCase(ModuleTestCase):
                     'name': 'Party 1',
                     }])
         self.assert_(party1.id)
-        self.assertEqual(party1.company, None)
+        self.assertEqual(party1.companies, ())
 
     @with_transaction()
     def test_party_company(self):
@@ -30,24 +30,26 @@ class PartyCompanyTestCase(ModuleTestCase):
         pool = Pool()
         Party = pool.get('party.party')
         Address = pool.get('party.address')
+        User = pool.get('res.user')
 
         company = create_company()
         with set_company(company):
-            party, = Party.create([{
-                        'name': 'Party 2',
-                        }])
+            party = Party()
+            party.name = 'Party 2'
+            party.companies = [company]
+            party.save()
             self.assert_(party.id)
-            self.assertNotEqual(party.company, None)
+            self.assertEqual(len(party.companies), 1)
             address, = Address.create([{
                         'party': party.id,
                         'street': 'St sample, 15',
                         'city': 'City',
                         }])
-            self.assertEqual(address.company == company, True)
+            self.assertEqual(address.companies == (company,), True)
 
             address1, address2 = Address.search([])
-            self.assertEqual(address1.company, None)
-            self.assertEqual(address2.company == company, True)
+            self.assertEqual(address1.companies, ())
+            self.assertEqual(address2.companies == (company,), True)
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
