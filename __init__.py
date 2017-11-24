@@ -15,10 +15,10 @@ def register():
         bank.Bank,
         bank.BankAccount,
         carrier.Carrier,
+        party.PartyCompany, # register before party.Party
         party.Party,
         party.Address,
         party.PartyIdentifier,
         party.ContactMechanism,
-        party.PartyCompany,
         user.User,
         module='party_company', type_='model')

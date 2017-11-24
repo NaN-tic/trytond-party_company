@@ -8,8 +8,8 @@ from trytond.transaction import Transaction
 from trytond.pyson import Eval
 from trytond import backend
 
-__all__ = ['Party', 'Address', 'PartyIdentifier', 'ContactMechanism',
-    'PartyCompany']
+__all__ = ['PartyCompany', 'Party', 'Address', 'PartyIdentifier',
+    'ContactMechanism']
 
 
 class Party:
