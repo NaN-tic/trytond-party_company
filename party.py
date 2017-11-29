@@ -22,6 +22,14 @@ class Party:
         searcher='search_companies_field', setter='set_companies_field')
 
     @classmethod
+    def __setup__(cls):
+        super(Party, cls).__setup__()
+        cls._error_messages.update({
+                'can_not_remove_companies': ('Can not remove companies related '
+                    'on parties.'),
+                })
+
+    @classmethod
     def __register__(cls, module_name):
         pool = Pool()
         PartyCompany = pool.get('party.party-company.company')
@@ -135,7 +143,11 @@ class Party:
 
         # return parties have not company
         if clause[2] == []:
-            query = party_h.join(party_company, type_='LEFT', condition=party_h.id == party_company.party).select(party_h.id, where=party_company.party == Null)
+            query = party_h.join(party_company,
+                type_='LEFT',
+                condition=party_h.id == party_company.party).select(
+                    party_h.id,
+                    where=party_company.party == Null)
             return [('id', 'in', query)]
 
         # return parties have a company
@@ -203,10 +215,11 @@ class Party:
                 PartyCompany.create(to_create)
 
         if to_remove:
-            cursor.execute(*party_company.delete(
-                where=(party_company.party.in_(party_ids) &
-                    party_company.company.in_(to_remove)))
-                )
+            cls.raise_user_error('can_not_remove_companies')
+            # cursor.execute(*party_company.delete(
+            #     where=(party_company.party.in_(party_ids) &
+            #         party_company.company.in_(to_remove)))
+            #     )
 
 
 class PartyCompanyMixin:
