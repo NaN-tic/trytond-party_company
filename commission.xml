@@ -15,4 +15,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_commission_agent"/>
         </record>
     </data>
+
+    <data depends="commission_manager">
+        <!-- commission.manager -->
+        <record model="ir.rule.group" id="rule_group_commission_manager">
+            <field name="model" search="[('model', '=', 'commission.manager')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_commission_manager1">
+            <field name="domain"
+                eval="['OR', ('companies', 'in', Eval('user', {}).get('companies', [])), ('companies', 'in', [])]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_commission_manager"/>
+        </record>
+    </data>
 </tryton>

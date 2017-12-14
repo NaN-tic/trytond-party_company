@@ -3,6 +3,7 @@
 # the full copyright notices and license terms.
 from trytond.pool import Pool
 from . import activity
+from . import commission
 from . import bank
 from . import carrier
 from . import party
@@ -20,5 +21,7 @@ def register():
         party.Address,
         party.PartyIdentifier,
         party.ContactMechanism,
+        commission.Manager,
+        commission.Agent,
         user.User,
         module='party_company', type_='model')
