@@ -2,10 +2,24 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 import unittest
+from contextlib import contextmanager
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.pool import Pool
-from trytond.modules.company.tests import create_company, set_company
+from trytond.transaction import Transaction
+from trytond.modules.company.tests import create_company
+
+
+@contextmanager
+def set_company(company):
+    pool = Pool()
+    User = pool.get('res.user')
+    User.write([User(Transaction().user)], {
+            'main_companies': [('add', [company.id])],
+            'company': company.id,
+                })
+    with Transaction().set_context(User.get_preferences(context_only=True)):
+        yield
 
 
 class PartyCompanyTestCase(ModuleTestCase):
@@ -50,6 +64,17 @@ class PartyCompanyTestCase(ModuleTestCase):
             address1, address2 = Address.search([])
             self.assertEqual(address1.companies, ())
             self.assertEqual(address2.companies == (company,), True)
+
+            user = User(Transaction().user)
+            self.assertEqual(len(user.main_companies) == 1, True)
+            self.assertEqual(user.main_companies[0] == company, True)
+
+        company2 = create_company()
+        with set_company(company2):
+            user = User(Transaction().user)
+            self.assertEqual(len(user.main_companies) == 2, True)
+            self.assertEqual(user.main_companies[1] == company2, True)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

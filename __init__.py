@@ -24,4 +24,5 @@ def register():
         commission.Manager,
         commission.Agent,
         user.User,
+        user.UserCompany,
         module='party_company', type_='model')
