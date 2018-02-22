@@ -211,10 +211,6 @@ class Party:
 
         if to_remove:
             cls.raise_user_error('can_not_remove_companies')
-            # cursor.execute(*party_company.delete(
-            #     where=(party_company.party.in_(party_ids) &
-            #         party_company.company.in_(to_remove)))
-            #     )
 
 
 class PartyCompanyMixin:

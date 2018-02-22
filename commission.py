@@ -10,8 +10,6 @@ __all__ = ['Manager', 'Agent']
 class Manager:
     __metaclass__ = PoolMeta
     __name__ = 'commission.manager'
-    companies = fields.Function(fields.Many2One('company.company', 'Company'),
-        'get_company', searcher='search_company_field')
     companies = fields.Function(fields.One2Many('company.company', None,
         'Companies'), 'get_companies', searcher='search_companies')
 

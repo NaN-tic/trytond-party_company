@@ -15,8 +15,6 @@ class Bank(object, party.PartyCompanyMixin):
 class BankAccount:
     __metaclass__ = PoolMeta
     __name__ = 'bank.account'
-    companies = fields.Function(fields.Many2One('company.company', 'Company'),
-        'get_company', searcher='search_company_field')
     companies = fields.Function(fields.One2Many('company.company', None,
         'Companies'), 'get_companies', searcher='search_companies')
 
