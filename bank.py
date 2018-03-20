@@ -15,13 +15,13 @@ class Bank(object, party.PartyCompanyMixin):
 class BankAccount:
     __metaclass__ = PoolMeta
     __name__ = 'bank.account'
-    company = fields.Function(fields.Many2One('company.company', 'Company'),
-        'get_company', searcher='search_company_field')
+    companies = fields.Function(fields.One2Many('company.company', None,
+        'Companies'), 'get_companies', searcher='search_companies')
 
-    def get_company(self, name):
-        if self.bank and self.bank.party.company:
-            return self.bank.party.company.id
+    def get_companies(self, name):
+        if self.bank:
+            return [c.id for c in self.bank.party.companies]
 
     @classmethod
-    def search_company_field(cls, name, clause):
-        return [('bank.party.company',) + tuple(clause[1:])]
+    def search_companies(cls, name, clause):
+        return [('bank.party.companies',) + tuple(clause[1:])]

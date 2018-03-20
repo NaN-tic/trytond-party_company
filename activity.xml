@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule" id="rule_activity_activity1">
             <field name="domain"
-                eval="['OR', ('company', 'in', Eval('user', {}).get('companies', [])), ('company', '=', None)]"
+                eval="['OR', ('companies', 'in', [Eval('user', {}).get('company', None)]), ('companies', 'in', [])]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_activity_activity"/>
         </record>
