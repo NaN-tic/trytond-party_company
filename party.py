@@ -71,6 +71,10 @@ class Party:
                 PartyCompany.save(party_companies)
             table.drop_column('company')
 
+    @staticmethod
+    def default_companies():
+        return [Transaction().context.get('company')]
+
     @classmethod
     def create(cls, vlist):
         # TODO pass rule group without user 0 (root)
