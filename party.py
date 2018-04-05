@@ -76,17 +76,13 @@ class Party:
         return [Transaction().context.get('company')]
 
     @classmethod
-    def create(cls, vlist):
-        # TODO pass rule group without user 0 (root)
-        with Transaction().set_user(0, set_context=True):
-            return super(Party, cls).create(vlist)
-
-    @classmethod
     def copy(cls, parties, default=None):
         if default is None:
             default = {}
         default = default.copy()
-        default['companies'] = [Transaction().context.get('company')]
+        company_id = Transaction().context.get('company')
+        if company_id:
+            default['companies'] = [company_id]
         return super(Party, cls).copy(parties, default=default)
 
     @classmethod
