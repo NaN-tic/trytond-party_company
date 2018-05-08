@@ -12,17 +12,28 @@ from . import user
 
 def register():
     Pool.register(
-        activity.Activity,
-        bank.Bank,
-        bank.BankAccount,
-        carrier.Carrier,
-        party.PartyCompany, # register before party.Party
         party.Party,
         party.Address,
+	user.User,
+        user.UserCompany,
         party.PartyIdentifier,
         party.ContactMechanism,
-        commission.Manager,
-        commission.Agent,
-        user.User,
-        user.UserCompany,
+        module='party_company', type_='model')
+    Pool.register(
+        activity.Activity,
+        depends=['activity'],
+        module='party_company', type_='model')
+    Pool.register(
+        bank.Bank,
+        bank.BankAccount,
+        depends=['bank'],
+        module='party_company', type_='model')
+    Pool.register(
+        carrier.Carrier,
+        depends=['carrier'],
+        module='party_company', type_='model')
+    Pool.register(
+	commission.Manager,
+	commission.Agent,
+        depends=['commission'],
         module='party_company', type_='model')
