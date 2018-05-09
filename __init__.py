@@ -12,10 +12,11 @@ from . import user
 
 def register():
     Pool.register(
+        user.User,
+        user.UserCompany,
+        party.PartyCompany,
         party.Party,
         party.Address,
-	user.User,
-        user.UserCompany,
         party.PartyIdentifier,
         party.ContactMechanism,
         module='party_company', type_='model')
@@ -33,7 +34,7 @@ def register():
         depends=['carrier'],
         module='party_company', type_='model')
     Pool.register(
-	commission.Manager,
-	commission.Agent,
+        commission.Manager,
+        commission.Agent,
         depends=['commission'],
         module='party_company', type_='model')

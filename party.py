@@ -73,7 +73,9 @@ class Party:
 
     @staticmethod
     def default_companies():
-        return [Transaction().context.get('company')]
+        if Transaction().context.get('company'):
+            return [Transaction().context.get('company')]
+        return []
 
     @classmethod
     def copy(cls, parties, default=None):
