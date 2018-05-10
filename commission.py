@@ -22,6 +22,6 @@ class Manager:
         return [('agent.party.companies',) + tuple(clause[1:])]
 
 
-class Agent(object, party.PartyCompanyMixin):
+class Agent(party.PartyCompanyMixin):
     __metaclass__ = PoolMeta
     __name__ = 'commission.agent'

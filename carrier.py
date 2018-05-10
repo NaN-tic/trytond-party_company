@@ -6,6 +6,6 @@ from . import party
 __all__ = ['Carrier']
 
 
-class Carrier(object, party.PartyCompanyMixin):
+class Carrier(party.PartyCompanyMixin):
     __metaclass__ = PoolMeta
     __name__ = 'carrier'

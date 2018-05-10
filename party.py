@@ -215,7 +215,7 @@ class Party:
             cls.raise_user_error('can_not_remove_companies')
 
 
-class PartyCompanyMixin:
+class PartyCompanyMixin(object):
     companies = fields.Function(fields.One2Many('company.company', None,
         'Companies'), 'get_companies', searcher='search_companies')
 
@@ -229,17 +229,17 @@ class PartyCompanyMixin:
         return [('party.companies',) + tuple(clause[1:])]
 
 
-class Address(object, PartyCompanyMixin):
+class Address(PartyCompanyMixin):
     __metaclass__ = PoolMeta
     __name__ = 'party.address'
 
 
-class PartyIdentifier(object, PartyCompanyMixin):
+class PartyIdentifier(PartyCompanyMixin):
     __metaclass__ = PoolMeta
     __name__ = 'party.identifier'
 
 
-class ContactMechanism(object, PartyCompanyMixin):
+class ContactMechanism(PartyCompanyMixin):
     __metaclass__ = PoolMeta
     __name__ = 'party.contact_mechanism'
 
