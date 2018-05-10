@@ -24,15 +24,6 @@ class Party:
     @classmethod
     def __setup__(cls):
         super(Party, cls).__setup__()
-        if hasattr(cls, 'agent'):
-            agent_domain = [
-                ('id', 'in', Eval('context', {}).get('companies', [])),
-                ]
-            if cls.agent.domain:
-                agent_domain += cls.agent.domain
-            # TODO upgrade 4.7 replace Property to MultiValue issue2349
-            cls.agent = fields.Property(fields.Many2One('commission.agent',
-                'Agent', domain=agent_domain))
         cls._error_messages.update({
                 'can_not_remove_companies': ('Can not remove companies related '
                     'on parties.'),
