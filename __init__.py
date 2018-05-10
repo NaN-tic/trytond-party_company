@@ -34,7 +34,10 @@ def register():
         depends=['carrier'],
         module='party_company', type_='model')
     Pool.register(
-        commission.Manager,
         commission.Agent,
         depends=['commission'],
+        module='party_company', type_='model')
+    Pool.register(
+        commission.Manager,
+        depends=['commission_manager'],
         module='party_company', type_='model')
