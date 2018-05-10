@@ -7,7 +7,7 @@ from . import party
 __all__ = ['Bank', 'BankAccount']
 
 
-class Bank(object, party.PartyCompanyMixin):
+class Bank(party.PartyCompanyMixin):
     __metaclass__ = PoolMeta
     __name__ = "bank"
 

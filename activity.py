@@ -6,6 +6,6 @@ from . import party
 __all__ = ['Activity']
 
 
-class Activity(object, party.PartyCompanyMixin):
+class Activity(party.PartyCompanyMixin):
     __metaclass__ = PoolMeta
     __name__ = "activity.activity"
