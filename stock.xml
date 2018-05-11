@@ -3,6 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data depends="stock">
+        <!-- comment rule in case has not issue4482.diff patch -->
         <record model="ir.rule" id="stock.rule_inventory">
           <field name="domain"
               eval="[('company', '=', Eval('user', {}).get('company', None))]"
