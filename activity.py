@@ -9,3 +9,8 @@ __all__ = ['Activity']
 class Activity(party.PartyCompanyMixin):
     __metaclass__ = PoolMeta
     __name__ = "activity.activity"
+
+    @classmethod
+    def __setup__(cls):
+        super(Activity, cls).__setup__()
+        cls.party.required = True
