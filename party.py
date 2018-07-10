@@ -112,6 +112,8 @@ class Party:
             return result
 
         company_ids = [c.id for c in user.companies]
+        if not company_ids:
+            return result
 
         for name in names:
             cursor.execute(*party_company.select(
