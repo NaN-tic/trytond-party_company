@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from . import activity
 from . import commission
 from . import bank
+from . import employee
 from . import carrier
 from . import party
 from . import user
@@ -12,6 +13,7 @@ from . import user
 
 def register():
     Pool.register(
+        employee.Employee,
         user.User,
         user.UserCompany,
         party.PartyCompany,
