@@ -3,7 +3,6 @@
 # the full copyright notices and license terms.
 from trytond.pool import Pool
 from . import activity
-from . import commission
 from . import bank
 from . import employee
 from . import carrier
@@ -35,11 +34,4 @@ def register():
         carrier.Carrier,
         depends=['carrier'],
         module='party_company', type_='model')
-    Pool.register(
-        commission.Agent,
-        depends=['commission'],
-        module='party_company', type_='model')
-    Pool.register(
-        commission.Manager,
-        depends=['commission_manager'],
-        module='party_company', type_='model')
+
