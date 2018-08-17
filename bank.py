@@ -7,13 +7,11 @@ from . import party
 __all__ = ['Bank', 'BankAccount']
 
 
-class Bank(party.PartyCompanyMixin):
-    __metaclass__ = PoolMeta
+class Bank(party.PartyCompanyMixin, metaclass=PoolMeta):
     __name__ = "bank"
 
 
-class BankAccount:
-    __metaclass__ = PoolMeta
+class BankAccount(metaclass=PoolMeta):
     __name__ = 'bank.account'
     companies = fields.Function(fields.One2Many('company.company', None,
         'Companies'), 'get_companies', searcher='search_companies')

@@ -12,8 +12,7 @@ from sql.functions import CurrentTimestamp
 __all__ = ['User', 'UserCompany']
 
 
-class User:
-    __metaclass__ = PoolMeta
+class User(metaclass=PoolMeta):
     __name__ = 'res.user'
     main_companies = fields.Many2Many('res.user-company.company', 'user',
         'company', 'Main Companies')
@@ -50,9 +49,9 @@ class User:
                 if company in company_childs:
                     company_ids = company_childs[company]
                 else:
-                    company_ids = map(int, Company.search([
+                    company_ids = list(map(int, Company.search([
                                 ('parent', 'child_of', [company.id]),
-                                ]))
+                                ])))
                     company_childs[company] = company_ids
                 if company_ids:
                     companies[user.id].extend(company_ids)

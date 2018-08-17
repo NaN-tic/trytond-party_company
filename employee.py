@@ -5,8 +5,7 @@ from trytond.pyson import Eval, If
 
 __all__ = ['Employee']
 
-class Employee:
-    __metaclass__ = PoolMeta
+class Employee(metaclass=PoolMeta):
     __name__ = 'company.employee'
 
     @classmethod

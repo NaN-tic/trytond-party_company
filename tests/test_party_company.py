@@ -35,7 +35,7 @@ class PartyCompanyTestCase(ModuleTestCase):
         party1, = Party.create([{
                     'name': 'Party 1',
                     }])
-        self.assert_(party1.id)
+        self.assertTrue(party1.id)
         self.assertEqual(party1.companies, ())
 
     @with_transaction()
@@ -52,7 +52,7 @@ class PartyCompanyTestCase(ModuleTestCase):
             party.name = 'Party 2'
             party.companies = [company]
             party.save()
-            self.assert_(party.id)
+            self.assertTrue(party.id)
             self.assertEqual(len(party.companies), 1)
             address, = Address.create([{
                         'party': party.id,

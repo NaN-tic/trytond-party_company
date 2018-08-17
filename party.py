@@ -12,9 +12,8 @@ __all__ = ['PartyCompany', 'Party', 'Address', 'PartyIdentifier',
     'ContactMechanism']
 
 
-class Party:
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
-    __metaclass__ = PoolMeta
     companies = fields.Function(fields.Many2Many('party.party-company.company',
         'party', 'company', 'Companies', domain=[
             ('id', 'in', Eval('context', {}).get('companies', [])),
@@ -231,18 +230,15 @@ class PartyCompanyMixin(object):
         return [('party.companies',) + tuple(clause[1:])]
 
 
-class Address(PartyCompanyMixin):
-    __metaclass__ = PoolMeta
+class Address(PartyCompanyMixin, metaclass=PoolMeta):
     __name__ = 'party.address'
 
 
-class PartyIdentifier(PartyCompanyMixin):
-    __metaclass__ = PoolMeta
+class PartyIdentifier(PartyCompanyMixin, metaclass=PoolMeta):
     __name__ = 'party.identifier'
 
 
-class ContactMechanism(PartyCompanyMixin):
-    __metaclass__ = PoolMeta
+class ContactMechanism(PartyCompanyMixin, metaclass=PoolMeta):
     __name__ = 'party.contact_mechanism'
 
 
