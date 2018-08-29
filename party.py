@@ -15,7 +15,7 @@ __all__ = ['PartyCompany', 'Party', 'Address', 'PartyIdentifier',
 class Party:
     __name__ = 'party.party'
     __metaclass__ = PoolMeta
-    companies = fields.Function(fields.Many2Many('party.party-company.company',
+    companies = fields.Function(fields.Many2Many('party.company.rel',
         'party', 'company', 'Companies', domain=[
             ('id', 'in', Eval('context', {}).get('companies', [])),
         ]), 'get_companies',
@@ -32,7 +32,7 @@ class Party:
     @classmethod
     def __register__(cls, module_name):
         pool = Pool()
-        PartyCompany = pool.get('party.party-company.company')
+        PartyCompany = pool.get('party.company.rel')
 
         sql_table = cls.__table__()
         TableHandler = backend.get('TableHandler')
@@ -80,7 +80,7 @@ class Party:
 
     @classmethod
     def delete(cls, parties):
-        PartyCompany = Pool().get('party.party-company.company')
+        PartyCompany = Pool().get('party.company.rel')
 
         party_company = PartyCompany.__table__()
         cursor = Transaction().connection.cursor()
@@ -95,7 +95,7 @@ class Party:
     @classmethod
     def get_companies(cls, parties, names):
         pool = Pool()
-        PartyCompany = pool.get('party.party-company.company')
+        PartyCompany = pool.get('party.company.rel')
         User = pool.get('res.user')
 
         party_company = PartyCompany.__table__()
@@ -129,7 +129,7 @@ class Party:
     def search_companies_field(cls, name, clause):
         pool = Pool()
         Company = pool.get('company.company')
-        PartyCompany = pool.get('party.party-company.company')
+        PartyCompany = pool.get('party.company.rel')
         Party = pool.get('party.party')
         User = pool.get('res.user')
 
@@ -170,7 +170,7 @@ class Party:
     @classmethod
     def set_companies_field(cls, parties, name, value):
         pool = Pool()
-        PartyCompany = pool.get('party.party-company.company')
+        PartyCompany = pool.get('party.company.rel')
 
         party_company = PartyCompany.__table__()
         cursor = Transaction().connection.cursor()
@@ -248,7 +248,7 @@ class ContactMechanism(PartyCompanyMixin):
 
 class PartyCompany(ModelSQL):
     'Party - Company'
-    __name__ = 'party.party-company.company'
+    __name__ = 'party.company.rel'
     _table = 'party_company_rel'
     party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
             required=True, select=True)
