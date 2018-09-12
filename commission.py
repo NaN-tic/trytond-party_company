@@ -3,9 +3,9 @@
 from trytond.pool import PoolMeta
 from . import party
 
-__all__ = ['Activity']
+__all__ = ['Agent']
 
 
-class Activity(object, party.PartyCompanyMixin):
+class Agent(object, party.PartyCompanyMixin):
     __metaclass__ = PoolMeta
-    __name__ = "activity.activity"
+    __name__ = 'commission.agent'

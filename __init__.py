@@ -6,8 +6,6 @@ from . import activity
 from . import bank
 from . import carrier
 from . import party
-from . import user
-
 
 def register():
     Pool.register(
@@ -15,11 +13,8 @@ def register():
         bank.Bank,
         bank.BankAccount,
         carrier.Carrier,
-        party.PartyCompany, # register before party.Party
         party.Party,
         party.Address,
         party.PartyIdentifier,
         party.ContactMechanism,
-        user.User,
-        user.UserCompany,
         module='party_company', type_='model')

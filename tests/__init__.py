@@ -3,4 +3,4 @@
 # the full copyright notices and license terms.
 from .test_party_company import suite
 
-__all__ = ['suite', 'set_company']
+__all__ = ['suite']

@@ -2,90 +2,34 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.party:"
-msgid "Can not remove companies related on parties."
-msgstr "No puede eliminar empresas que estan ya relacionadas con terceros."
-
-msgctxt "field:activity.activity,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:bank,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:bank.account,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:carrier,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:commission.agent,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:commission.manager,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:party.address,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:party.contact_mechanism,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:party.identifier,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:party.party,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:res.user,main_companies:"
-msgid "Main Companies"
-msgstr "Empresas principales"
-
-msgctxt "field:res.user-company.company,company:"
+msgctxt "field:activity.activity,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:res.user-company.company,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
+msgctxt "field:bank,company:"
+msgid "Company"
+msgstr "Empresa"
 
-msgctxt "field:res.user-company.company,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
+msgctxt "field:bank.account,company:"
+msgid "Company"
+msgstr "Empresa"
 
-msgctxt "field:res.user-company.company,id:"
-msgid "ID"
-msgstr "ID"
+msgctxt "field:carrier,company:"
+msgid "Company"
+msgstr "Empresa"
 
-msgctxt "field:res.user-company.company,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgctxt "field:party.address,company:"
+msgid "Company"
+msgstr "Empresa"
 
-msgctxt "field:res.user-company.company,user:"
-msgid "User"
-msgstr "Usuario"
+msgctxt "field:party.contact_mechanism,company:"
+msgid "Company"
+msgstr "Empresa"
 
-msgctxt "field:res.user-company.company,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
+msgctxt "field:party.identifier,company:"
+msgid "Company"
+msgstr "Empresa"
 
-msgctxt "field:res.user-company.company,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "model:res.user-company.company,name:"
-msgid "User - Company"
-msgstr "Usuario - Empresa"
-
-msgctxt "view:party.party:"
-msgid "Companies"
-msgstr "Empresas"
+msgctxt "field:party.party,company:"
+msgid "Company"
+msgstr "Empresa"
