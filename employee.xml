@@ -13,5 +13,16 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_employee"/>
         </record>
+
+        <record model="ir.rule.group" id="rule_group_user_company_employee">
+            <field name="model" search="[('model', '=', 'res.user-company.employee')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_user_company_employee1">
+            <field name="domain"
+                eval="[('employee.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_user_company_employee"/>
+        </record>
     </data>
 </tryton>
