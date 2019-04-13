@@ -37,6 +37,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- identifier -->
         <record model="ir.rule.group" id="rule_group_identifier">
+            <field name="name">Party Identifier Company Rule</field>
             <field name="model" search="[('model', '=', 'party.identifier')]"/>
             <field name="global_p" eval="True"/>
         </record>
