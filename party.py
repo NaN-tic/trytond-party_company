@@ -7,6 +7,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
 from trytond import backend
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 
 __all__ = ['PartyCompany', 'Party', 'Address', 'PartyIdentifier',
     'ContactMechanism']
@@ -19,14 +21,6 @@ class Party(metaclass=PoolMeta):
             ('id', 'in', Eval('context', {}).get('companies', [])),
         ]), 'get_companies',
         searcher='search_companies_field', setter='set_companies_field')
-
-    @classmethod
-    def __setup__(cls):
-        super(Party, cls).__setup__()
-        cls._error_messages.update({
-                'can_not_remove_companies': ('Can not remove companies related '
-                    'on parties.'),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -213,7 +207,7 @@ class Party(metaclass=PoolMeta):
                 PartyCompany.create(to_create)
 
         if to_remove:
-            cls.raise_user_error('can_not_remove_companies')
+            raise UserError(gettext('party_company.can_not_remove_companies'))
 
 
 class PartyCompanyMixin(object):
