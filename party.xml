@@ -11,6 +11,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_party">
+            <field name="name">Party Company Rule</field>
             <field name="model" search="[('model', '=', 'party.party')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -23,6 +24,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- address -->
         <record model="ir.rule.group" id="rule_group_address">
+            <field name="name">Address Company Rule</field>
             <field name="model" search="[('model', '=', 'party.address')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -47,6 +49,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- contact mechanism -->
         <record model="ir.rule.group" id="rule_group_contact_mechanism">
+            <field name="name">Contact Mechanism Company Rule</field>
             <field name="model" search="[('model', '=', 'party.contact_mechanism')]"/>
             <field name="global_p" eval="True"/>
         </record>

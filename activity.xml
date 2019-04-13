@@ -5,6 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <data depends="activity">
         <!-- activity -->
         <record model="ir.rule.group" id="rule_group_activity_activity">
+            <field name="name">Activity Company Rule</field>
             <field name="model" search="[('model', '=', 'activity.activity')]"/>
             <field name="global_p" eval="True"/>
         </record>

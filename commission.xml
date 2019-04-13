@@ -5,6 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <data depends="commission">
         <!-- commission -->
         <record model="ir.rule.group" id="rule_group_commission">
+            <field name="name">Commission Company Rule</field>
             <field name="model" search="[('model', '=', 'commission')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -17,6 +18,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- commission.agent -->
         <record model="ir.rule.group" id="rule_group_commission_agent">
+            <field name="name">Commission Agent Company Rule</field>
             <field name="model" search="[('model', '=', 'commission.agent')]"/>
             <field name="global_p" eval="True"/>
         </record>
