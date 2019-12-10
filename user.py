@@ -91,12 +91,11 @@ class UserCompany(ModelSQL):
     @classmethod
     def __register__(cls, module_name):
         User = Pool().get('res.user')
-        TableHandler = backend.get('TableHandler')
         user_company_table_name = 'res_user_company_rel'
         cursor = Transaction().connection.cursor()
 
         user_company_table_exist = False
-        if TableHandler.table_exist(user_company_table_name):
+        if backend.TableHandler.table_exist(user_company_table_name):
             user_company_table_exist = True
 
         super(UserCompany, cls).__register__(module_name)
