@@ -28,13 +28,12 @@ class Party(metaclass=PoolMeta):
         PartyCompany = pool.get('party.company.rel')
 
         sql_table = cls.__table__()
-        TableHandler = backend.get('TableHandler')
 
         super(Party, cls).__register__(module_name)
 
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = backend.TableHandler(cls, module_name)
 
         if (table.column_exist('company')):
             sql_where = (sql_table.company != Null)
