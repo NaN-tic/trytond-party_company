@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part sale_shop module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="sale_shop">
+        <record model="ir.rule" id="rule_sale_shop2">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('main_companies', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="sale_shop.rule_group_sale_shop"/>
+        </record>
+    </data>
+</tryton>
