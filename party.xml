@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.rule" id="rule_party1">
             <field name="domain"
-                eval="['OR', ('companies', 'in', [Eval('user', {}).get('company', None)]), ('companies', 'in', []), ('active', '=', False)]"
+                eval="['OR', ('companies', 'in', [Eval('user', {}).get('company', None)]), ('companies', 'in', [])]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_party"/>
         </record>
