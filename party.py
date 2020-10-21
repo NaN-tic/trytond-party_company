@@ -22,6 +22,9 @@ class Party(metaclass=PoolMeta):
         ]), 'get_companies',
         searcher='search_companies_field', setter='set_companies_field')
 
+    current_company = fields.Function(fields.Boolean('Current Company'),
+        'get_current_company', searcher='search_current_company')
+
     @classmethod
     def __register__(cls, module_name):
         pool = Pool()
@@ -85,6 +88,16 @@ class Party(metaclass=PoolMeta):
             where=(party_company.party.in_(party_ids))
             ))
 
+    def get_current_company(self, name):
+        pool = Pool()
+        User = pool.get('res.user')
+        user = User(Transaction().user)
+
+        for company in self.companies:
+            if company == user.company:
+                return True
+        return False
+
     @classmethod
     def get_companies(cls, parties, names):
         pool = Pool()
@@ -117,6 +130,26 @@ class Party(metaclass=PoolMeta):
             for party, value in cursor.fetchall():
                 result[name][party].append(value)
         return result
+
+    @classmethod
+    def search_current_company(cls, name, clause):
+        pool = Pool()
+        PartyCompany = pool.get('party.company.rel')
+        User = pool.get('res.user')
+
+        party_company = PartyCompany.__table__()
+
+        user = User(Transaction().user)
+        if not user.company:
+            return [('id', '=', -1)]
+
+        query = party_company.select(party_company.party,
+            where=party_company.company==user.company)
+        if clause[2] == '=':
+            return [('id', 'in', query)]
+        elif clause[2] == '!=':
+            return [('id', 'not in', query)]
+        return []
 
     @classmethod
     def search_companies_field(cls, name, clause):
