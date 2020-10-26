@@ -143,10 +143,10 @@ class Party(metaclass=PoolMeta):
             return [('id', '=', -1)]
 
         query = party_company.select(party_company.party,
-            where=party_company.company==user.company)
-        if clause[2] == '=':
+            where=party_company.company==user.company.id)
+        if clause[1] == '=':
             return [('id', 'in', query)]
-        elif clause[2] == '!=':
+        elif clause[1] == '!=':
             return [('id', 'not in', query)]
         return []
 
