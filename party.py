@@ -135,11 +135,17 @@ class Party(metaclass=PoolMeta):
         pool = Pool()
         PartyCompany = pool.get('party.company.rel')
         User = pool.get('res.user')
+        Company = pool.get('company.company')
 
         party_company = PartyCompany.__table__()
 
         user = User(Transaction().user)
         if not user.company:
+            companies = Company.search([], limit=1)
+            # If there are no companies yet, then allow access
+            # to all parties
+            if not companies:
+                return []
             return [('id', '=', -1)]
 
         with_company = party_company.select(party_company.party,
