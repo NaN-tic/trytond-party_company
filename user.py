@@ -36,6 +36,18 @@ class User(metaclass=PoolMeta):
         cls.company.depends = depends
 
     @classmethod
+    def write(cls, *args):
+        actions = iter(args)
+        new_args = []
+        for records, values in zip(actions, actions):
+            new_args.append(records)
+            if 'main_company' in values:
+                values = values.copy()
+                values['main_companies'] = [('add', [values['main_company']])]
+            new_args.append(values)
+        super().write(*new_args)
+
+    @classmethod
     def get_companies(cls, users, name):
         Company = Pool().get('company.company')
 
