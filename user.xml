@@ -8,5 +8,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="res.user_view_form"/>
             <field name="name">user_form</field>
         </record>
+
+        <record model="res.user" id="user_party_company">
+            <field name="login">user_cron_party_company</field>
+            <field name="name">Cron User Company</field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group" id="user_party_company_group_admin">
+            <field name="user" ref="user_party_company"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
     </data>
 </tryton>
