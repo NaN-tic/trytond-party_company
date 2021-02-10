@@ -2,13 +2,15 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 import unittest
+import doctest
 from contextlib import contextmanager
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.pool import Pool
+from trytond.tests.test_tryton import (doctest_setup, doctest_teardown,
+    doctest_checker)
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 from trytond.modules.company.tests import create_company
-
 
 @contextmanager
 def set_company(company):
@@ -80,4 +82,8 @@ def suite():
     suite = trytond.tests.test_tryton.suite()
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             PartyCompanyTestCase))
+    suite.addTests(doctest.DocFileSuite('scenario_party_company.rst',
+            setUp=doctest_setup, tearDown=doctest_teardown, encoding='utf-8',
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE,
+            checker=doctest_checker))
     return suite
