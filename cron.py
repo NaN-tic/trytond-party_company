@@ -13,19 +13,23 @@ class Cron(metaclass=PoolMeta):
     @dualmethod
     @ModelView.button
     def run_once(cls, crons):
-        # overwrite run_once method because main_company is deprecated
-        User = Pool().get('res.user')
+        pool = Pool()
+        User = pool.get('res.user')
+        ModelData = pool.get('ir.model.data')
+
+        user = User(ModelData.get_id('party_company', 'user_party_company'))
+
         for cron in crons:
             if not cron.companies:
                 super(Cron, cls).run_once([cron])
             else:
                 # TODO replace with context
                 for company in cron.companies:
-                    User.write([cron.user], {
+                    User.write([user], {
                             'company': company.id,
                             })
                     with Transaction().set_context(company=company.id):
                         super(Cron, cls).run_once([cron])
-                User.write([cron.user], {
+                User.write([user], {
                         'company': None,
                         })
