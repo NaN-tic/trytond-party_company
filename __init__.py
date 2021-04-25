@@ -8,15 +8,12 @@ from . import cron
 from . import employee
 from . import carrier
 from . import party
-from . import user
 
 
 def register():
     Pool.register(
         cron.Cron,
         employee.Employee,
-        user.User,
-        user.UserCompany,
         party.PartyCompany,
         party.Party,
         party.Address,

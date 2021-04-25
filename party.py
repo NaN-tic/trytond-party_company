@@ -10,9 +10,6 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 
-__all__ = ['PartyCompany', 'Party', 'Address', 'PartyIdentifier',
-    'ContactMechanism']
-
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'

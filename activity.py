@@ -3,8 +3,6 @@
 from trytond.pool import PoolMeta
 from . import party
 
-__all__ = ['Activity']
-
 
 class Activity(party.PartyCompanyMixin, metaclass=PoolMeta):
     __name__ = "activity.activity"

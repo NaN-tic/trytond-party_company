@@ -4,8 +4,6 @@ from trytond.model import fields
 from trytond.pool import PoolMeta
 from . import party
 
-__all__ = ['Bank', 'BankAccount']
-
 
 class Bank(party.PartyCompanyMixin, metaclass=PoolMeta):
     __name__ = "bank"

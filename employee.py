@@ -4,7 +4,6 @@ from trytond.pool import PoolMeta
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
-__all__ = ['Employee']
 
 class Employee(metaclass=PoolMeta):
     __name__ = 'company.employee'

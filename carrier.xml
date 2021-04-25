@@ -9,10 +9,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model" search="[('model', '=', 'carrier')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_carrier1">
-            <field name="domain"
-                eval="['OR', ('companies', 'in', [Eval('user', {}).get('company', None)]), ('companies', 'in', [])]"
-                pyson="1"/>
+        <record model="ir.rule" id="rule_carrier_companies">
+            <field name="domain" eval="[('companies', 'in', Eval('companies', []))]" pyson="1"/>
             <field name="rule_group" ref="rule_group_carrier"/>
         </record>
     </data>
