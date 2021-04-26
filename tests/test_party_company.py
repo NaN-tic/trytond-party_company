@@ -17,7 +17,7 @@ def set_company(company):
     pool = Pool()
     User = pool.get('res.user')
     User.write([User(Transaction().user)], {
-            'main_companies': [('add', [company.id])],
+            'companies': [('add', [company.id])],
             'company': company.id,
                 })
     with Transaction().set_context(User.get_preferences(context_only=True)):
@@ -68,14 +68,14 @@ class PartyCompanyTestCase(ModuleTestCase):
             self.assertEqual(address2.companies == (company,), True)
 
             user = User(Transaction().user)
-            self.assertEqual(len(user.main_companies) == 1, True)
-            self.assertEqual(user.main_companies[0] == company, True)
+            self.assertEqual(len(user.companies) == 1, True)
+            self.assertEqual(user.companies[0] == company, True)
 
         company2 = create_company()
         with set_company(company2):
             user = User(Transaction().user)
-            self.assertEqual(len(user.main_companies) == 2, True)
-            self.assertEqual(user.main_companies[1] == company2, True)
+            self.assertEqual(len(user.companies) == 2, True)
+            self.assertEqual(user.companies[1] == company2, True)
 
 
 def suite():

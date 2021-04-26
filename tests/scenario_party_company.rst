@@ -53,8 +53,8 @@ Create companies and currencies::
     >>> _ = create_company(party=party3, currency=peso_colombian)
 
     >>> company1, company2, company3 = Company.find([])
-    >>> admin.main_companies.append(company2)
-    >>> admin.main_companies.append(company3)
+    >>> admin.companies.append(company2)
+    >>> admin.companies.append(company3)
     >>> admin.save()
     >>> config._context = User.get_preferences(True, config.context)
 
