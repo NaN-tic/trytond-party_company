@@ -4,7 +4,6 @@
 from trytond.pool import Pool
 from . import activity
 from . import bank
-from . import cron
 from . import employee
 from . import carrier
 from . import party
@@ -13,7 +12,6 @@ from . import user
 
 def register():
     Pool.register(
-        cron.Cron,
         employee.Employee,
         user.User,
         user.UserCompany,
