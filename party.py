@@ -256,6 +256,7 @@ class Party(metaclass=PoolMeta):
 
 
 class PartyCompanyMixin(object):
+    __slots__ = ()
     companies = fields.Function(fields.One2Many('company.company', None,
         'Companies'), 'get_companies', searcher='search_companies')
 
