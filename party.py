@@ -84,9 +84,10 @@ class Party(metaclass=PoolMeta):
 
         super(Party, cls).delete(parties)
 
-        cursor.execute(*party_company.delete(
-            where=(party_company.party.in_(party_ids))
-            ))
+        if party_ids:
+            cursor.execute(*party_company.delete(
+                where=(party_company.party.in_(party_ids))
+                ))
 
     def get_current_company(self, name):
         pool = Pool()
