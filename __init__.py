@@ -6,6 +6,7 @@ from . import activity
 from . import bank
 from . import employee
 from . import carrier
+from . import galatea
 from . import party
 from . import user
 
@@ -33,4 +34,8 @@ def register():
     Pool.register(
         carrier.Carrier,
         depends=['carrier'],
+        module='party_company', type_='model')
+    Pool.register(
+        galatea.GalateaUser,
+        depends=['galatea'],
         module='party_company', type_='model')
