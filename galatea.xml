@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="galatea">
+        <!-- rule -->
+        <record model="ir.rule.group" id="rule_group_galatea_user">
+            <field name="name">User in company</field>
+            <field name="model" search="[('model', '=', 'galatea.user')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_galatea_user">
+            <field name="domain"
+                eval="[('websites.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_galatea_user"/>
+        </record>
+    </data>
+</tryton>
