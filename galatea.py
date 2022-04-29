@@ -19,7 +19,7 @@ class GalateaUser(metaclass=PoolMeta):
         cls.websites.domain += [('company', 'in', Eval('companies'))]
         cls.websites.depends += ['companies']
 
-    @fields.depends('party')
+    @fields.depends('party', '_parent_party.companies')
     def on_change_with_companies(self, name=None):
         User =  Pool().get('res.user')
 
