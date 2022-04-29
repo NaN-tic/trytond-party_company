@@ -11,7 +11,9 @@ __all__ = ['GalateaUser']
 class GalateaUser(metaclass=PoolMeta):
     __name__ = 'galatea.user'
     companies = fields.Function(fields.One2Many(
-        'company.company', None, 'Companies'), 'on_change_with_companies')
+        'company.company', None, "Companies"),
+        'on_change_with_companies', setter='set_companies'
+        )
 
     @classmethod
     def __setup__(cls):
@@ -28,6 +30,11 @@ class GalateaUser(metaclass=PoolMeta):
         else:
             user = User(Transaction().user)
             return [c.id for c in user.companies]
+
+    @classmethod
+    def set_companies(cls, users, name, value):
+        # when select a party try to add companies when call create
+        pass
 
     @staticmethod
     def default_websites():
