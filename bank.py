@@ -1,8 +1,9 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
 from trytond.model import fields
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 from trytond.transaction import Transaction
+from trytond import backend
 from . import party
 
 
@@ -29,20 +30,15 @@ class BankAccountNumber(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        Module = pool.get('ir.module')
-
         cursor = Transaction().connection.cursor()
 
-        party_companies = Module.search([
-            ('name', '=', 'party_company'),
-            ('state', '!=', 'activated'),
-            ], limit=1)
-        if party_companies:
+        # since issue11198 fill or create bank from IBAN and enforce uniqueness
+        # replace default sql_constrain (keep same name) that always return false
+        exist = backend.TableHandler.table_exist(cls._table)
+        if exist:
             cursor.execute("ALTER TABLE bank_account_number DROP CONSTRAINT "
                 "IF EXISTS bank_account_number_number_iban_exclude")
             cursor.execute("ALTER table bank_account_number add constraint "
-                "bank_account_number_number_iban_exclude check (type in "
-                "('iban', 'other'))")
+                "bank_account_number_number_iban_exclude check (type != 'x')")
 
         super(BankAccountNumber, cls).__register__(module_name)
