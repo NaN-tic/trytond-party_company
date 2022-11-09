@@ -288,8 +288,8 @@ class PartyCompany(ModelSQL):
     __name__ = 'party.company.rel'
     _table = 'party_company_rel'
     party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
-            required=True, select=True, context={
+            required=True, context={
                 'company': Eval('company'),
             }, depends=['company'])
     company = fields.Many2One('company.company', 'Company',
-        ondelete='CASCADE', required=True, select=True)
+        ondelete='CASCADE', required=True)
