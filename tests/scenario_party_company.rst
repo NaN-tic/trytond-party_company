@@ -83,3 +83,16 @@ Create new parties::
     True
     >>> party5.companies[0] == company2_user.company
     True
+
+Delete companies in parties::
+
+    >>> party6 = Party()
+    >>> len(party6.companies) == 1
+    True
+    >>> company, = party6.companies
+    >>> party6.companies.remove(company)
+    >>> len(party6.companies) == 0
+    True
+    >>> party6.save()
+    >>> len(party6.companies) == 0
+    True
