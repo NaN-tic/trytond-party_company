@@ -20,4 +20,6 @@ class BankAccount(metaclass=PoolMeta):
 
     @classmethod
     def search_companies(cls, name, clause):
+        print('----------')
+        print(clause)
         return [('bank.party.companies',) + tuple(clause[1:])]
