@@ -30,17 +30,18 @@ class BankAccount(metaclass=PoolMeta):
     def get_owners_by_companies(cls, records, name):
         companies = Transaction().context.get('companies', [])
 
-        res = dict((x.id, None) for x in records)
-        for record in records:
-            owners = []
-            for owner in record.owners:
-                owner_companies = owner.companies
-                if not owner_companies:
-                    owners.append(owner)
-                    continue
-                for company in owner_companies:
-                    if company.id in companies:
+        with Transaction().set_context(_check_access=False):
+            res = dict((x.id, None) for x in records)
+            for record in records:
+                owners = []
+                for owner in record.owners:
+                    owner_companies = owner.companies
+                    if not owner_companies:
                         owners.append(owner)
-                        break
-            res[record.id] = [o.id for o in owners]
+                        continue
+                    for company in owner_companies:
+                        if company.id in companies:
+                            owners.append(owner)
+                            break
+                res[record.id] = [o.id for o in owners]
         return res
