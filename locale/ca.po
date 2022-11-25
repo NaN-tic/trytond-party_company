@@ -10,6 +10,10 @@ msgctxt "field:bank.account,companies:"
 msgid "Companies"
 msgstr "Empreses"
 
+msgctxt "field:bank.account,owners_by_companies:"
+msgid "Owners"
+msgstr "Titulars"
+
 msgctxt "field:carrier,companies:"
 msgid "Companies"
 msgstr "Empreses"

@@ -4,6 +4,12 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data depends="bank">
         <!-- bank -->
+        <record model="ir.ui.view" id="bank_account_view_form">
+            <field name="model">bank.account</field>
+            <field name="inherit" ref="bank.bank_account_view_form"/>
+            <field name="name">bank_account_form</field>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_bank">
             <field name="name">Bank Company Rule</field>
             <field name="model" search="[('model', '=', 'bank')]"/>

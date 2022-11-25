@@ -2,6 +2,7 @@
 # copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import PoolMeta
+from trytond.transaction import Transaction
 from . import party
 
 
@@ -13,6 +14,9 @@ class BankAccount(metaclass=PoolMeta):
     __name__ = 'bank.account'
     companies = fields.Function(fields.One2Many('company.company', None,
         'Companies'), 'get_companies', searcher='search_companies')
+    owners_by_companies = fields.Function(
+        fields.Many2Many('bank.account-party.party', 'account', 'owner',
+        'Owners'), 'get_owners_by_companies')
 
     def get_companies(self, name):
         if self.bank:
@@ -20,6 +24,18 @@ class BankAccount(metaclass=PoolMeta):
 
     @classmethod
     def search_companies(cls, name, clause):
-        print('----------')
-        print(clause)
         return [('bank.party.companies',) + tuple(clause[1:])]
+
+    @classmethod
+    def get_owners_by_companies(cls, records, name):
+        companies = Transaction().context.get('companies', [])
+
+        res = dict((x.id, None) for x in records)
+        for record in records:
+            owners = []
+            for owner in record.owners:
+                for company in owner.companies:
+                    if company.id in companies:
+                        owners.append(owner)
+            res[record.id] = [o.id for o in owners]
+        return res
