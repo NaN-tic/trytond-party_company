@@ -36,7 +36,7 @@ class BankAccount(metaclass=PoolMeta):
     def get_owners_by_companies(cls, records, name):
         PartyCompany = Pool().get('party.company.rel')
 
-        companies = Transaction().context.get('companies', [])
+        user_company = Transaction().context.get('company')
 
         res = dict((x.id, None) for x in records)
         for record in records:
@@ -50,7 +50,7 @@ class BankAccount(metaclass=PoolMeta):
                     owners.append(owner)
                     continue
                 for company in owner_companies:
-                    if company.id in companies:
+                    if company.id == user_company:
                         owners.append(owner)
                         break
             res[record.id] = [o.id for o in owners]
