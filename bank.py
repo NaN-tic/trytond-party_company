@@ -34,8 +34,13 @@ class BankAccount(metaclass=PoolMeta):
         for record in records:
             owners = []
             for owner in record.owners:
-                for company in owner.companies:
+                owner_companies = owner.companies
+                if not owner_companies:
+                    owners.append(owner)
+                    continue
+                for company in owner_companies:
                     if company.id in companies:
                         owners.append(owner)
+                        break
             res[record.id] = [o.id for o in owners]
         return res
