@@ -24,6 +24,7 @@ def set_company(company):
 class PartyCompanyTestCase(CompanyTestMixin, ModuleTestCase):
     'Test PartyCompany module'
     module = 'party_company'
+    extras = ['bank']
 
     @with_transaction()
     def test_party(self):

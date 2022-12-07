@@ -4,13 +4,19 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data depends="bank">
         <!-- bank -->
+        <record model="ir.ui.view" id="bank_account_view_form">
+            <field name="model">bank.account</field>
+            <field name="inherit" ref="bank.bank_account_view_form"/>
+            <field name="name">bank_account_form</field>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_bank">
             <field name="name">Bank Company Rule</field>
             <field name="model" search="[('model', '=', 'bank')]"/>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_bank_companies">
-            <field name="domain" eval="[('companies', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="domain" eval="['OR', ('companies', 'in', Eval('companies', [])), ('companies', 'in', [])]" pyson="1"/>
             <field name="rule_group" ref="rule_group_bank"/>
         </record>
 
@@ -20,7 +26,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_bank_account_companies">
-            <field name="domain" eval="[('companies', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="domain" eval="[['OR', ('companies', 'in', Eval('companies', [])), ('companies', 'in', [])], ['OR', ('owners.companies', 'in', Eval('companies', [])), ('owners.companies', 'in', []), ('owners', 'in', [])]]" pyson="1"/>
             <field name="rule_group" ref="rule_group_bank_account"/>
         </record>
     </data>
