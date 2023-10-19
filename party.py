@@ -197,9 +197,9 @@ class Party(metaclass=PoolMeta):
             companies = Company.search([
                 ('party.name', clause[1], clause[2]),
                 ])
-            if clause[1] == 'ilike' or clause[1] == '=':
+            if companies and (clause[1] == 'ilike' or clause[1] == '='):
                 sql_where = party_company.company.in_([c.id for c in companies])
-            elif clause[1] == 'not ilike' or clause[1] == '!=':
+            elif companies and (clause[1] == 'not ilike' or clause[1] == '!='):
                 sql_where = ~party_company.company.in_([c.id for c in companies])
             else:
                 return [('id', 'in', [])]
