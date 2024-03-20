@@ -61,16 +61,6 @@ class Party(metaclass=PoolMeta):
         return []
 
     @classmethod
-    def copy(cls, parties, default=None):
-        if default is None:
-            default = {}
-        default = default.copy()
-        company_id = Transaction().context.get('company')
-        if company_id:
-            default['companies'] = [company_id]
-        return super(Party, cls).copy(parties, default=default)
-
-    @classmethod
     def delete(cls, parties):
         PartyCompany = Pool().get('party.company.rel')
 

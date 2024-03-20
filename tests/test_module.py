@@ -75,5 +75,14 @@ class PartyCompanyTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual(len(user.companies) == 2, True)
             self.assertEqual(user.companies[1] == company2, True)
 
+            party = Party()
+            party.name = 'Party 2'
+            party.companies = [company, company2]
+            party.save()
+            self.assertEqual(len(party.companies), 2)
+
+            # when copy party, set current company; default_company()
+            new_party, = Party.copy([party])
+            self.assertEqual(len(new_party.companies), 1)
 
 del ModuleTestCase
