@@ -31,7 +31,10 @@ class BankAccount(metaclass=PoolMeta):
 
     @classmethod
     def search_companies(cls, name, clause):
-        return [('bank.party.companies',) + tuple(clause[1:])]
+        return ['OR',
+            ('bank', '=', None),
+            ('bank.party.companies',) + tuple(clause[1:]),
+            ]
 
     @classmethod
     def get_owners_by_companies(cls, records, name):
