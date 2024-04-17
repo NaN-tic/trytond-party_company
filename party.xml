@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_party">
             <field name="name">Party Company Rule</field>
-            <field name="model" search="[('model', '=', 'party.party')]"/>
+            <field name="model">party.party</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_party1">
@@ -23,7 +23,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- address -->
         <record model="ir.rule.group" id="rule_group_address">
             <field name="name">Address Company Rule</field>
-            <field name="model" search="[('model', '=', 'party.address')]"/>
+            <field name="model">party.address</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_address1">
@@ -34,7 +34,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- identifier -->
         <record model="ir.rule.group" id="rule_group_identifier">
             <field name="name">Party Identifier Company Rule</field>
-            <field name="model" search="[('model', '=', 'party.identifier')]"/>
+            <field name="model">party.identifier</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_identifier1">
@@ -45,7 +45,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- contact mechanism -->
         <record model="ir.rule.group" id="rule_group_contact_mechanism">
             <field name="name">Contact Mechanism Company Rule</field>
-            <field name="model" search="[('model', '=', 'party.contact_mechanism')]"/>
+            <field name="model">party.contact_mechanism</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_contact_mechanism1">

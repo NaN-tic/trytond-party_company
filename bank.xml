@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_bank">
             <field name="name">Bank Company Rule</field>
-            <field name="model" search="[('model', '=', 'bank')]"/>
+            <field name="model">bank</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_bank_companies">
@@ -22,7 +22,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.rule.group" id="rule_group_bank_account">
             <field name="name">Bank Account Company Rule</field>
-            <field name="model" search="[('model', '=', 'bank.account')]"/>
+            <field name="model">bank.account</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_bank_account_companies">

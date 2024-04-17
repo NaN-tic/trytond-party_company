@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- rule -->
         <record model="ir.rule.group" id="rule_group_galatea_user">
             <field name="name">User in company</field>
-            <field name="model" search="[('model', '=', 'galatea.user')]"/>
+            <field name="model">galatea.user</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_galatea_user">

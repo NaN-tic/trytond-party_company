@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- carrier -->
         <record model="ir.rule.group" id="rule_group_carrier">
             <field name="name">Carrier Company Rule</field>
-            <field name="model" search="[('model', '=', 'carrier')]"/>
+            <field name="model">carrier</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_carrier_companies">
