@@ -78,7 +78,9 @@ class BankAccountNumber(metaclass=PoolMeta):
         if exist and backend.name == 'postgresql':
             cursor.execute("ALTER TABLE bank_account_number DROP CONSTRAINT "
                 "IF EXISTS bank_account_number_number_iban_exclude")
+            cursor.execute("ALTER TABLE bank_account_number DROP CONSTRAINT "
+                "IF EXISTS bank_account_number_number_iban_active_exclude")
             cursor.execute("ALTER table bank_account_number add constraint "
-                "bank_account_number_number_iban_exclude check (type != 'x')")
+                "bank_account_number_number_iban_active_exclude check (type != 'x')")
 
         super(BankAccountNumber, cls).__register__(module_name)
