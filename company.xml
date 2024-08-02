@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="company.act_company_list">
+            <field name="domain" eval="[('allowed_party', '=', True)]" pyson="1"/>
+        </record>
+    </data>
+</tryton>
