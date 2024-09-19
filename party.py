@@ -138,14 +138,13 @@ class Party(metaclass=PoolMeta):
 
         with_company = party_company.select(party_company.party,
             where=party_company.company==user.company.id)
-
         party_company2 = PartyCompany.__table__()
         without_company = party_company2.select(party_company2.party)
 
         if clause[1] == '=':
             return ['OR',
                 ('id', 'in', with_company),
-                ('id', 'not in', without_company),
+                ('id', 'in', without_company),
                 ]
         elif clause[1] == '!=':
             return [
