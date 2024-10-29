@@ -64,31 +64,31 @@ msgstr "Regla direción empresa"
 
 msgctxt "model:ir.rule.group,name:rule_group_bank"
 msgid "Bank Company Rule"
-msgstr ""
+msgstr "Regla banco"
 
 msgctxt "model:ir.rule.group,name:rule_group_bank_account"
 msgid "Bank Account Company Rule"
-msgstr ""
+msgstr "Regla cuenta banco"
 
 msgctxt "model:ir.rule.group,name:rule_group_carrier"
 msgid "Carrier Company Rule"
-msgstr ""
+msgstr "Regla transportista"
 
 msgctxt "model:ir.rule.group,name:rule_group_contact_mechanism"
 msgid "Contact Mechanism Company Rule"
-msgstr ""
+msgstr "Regla medio de contacto"
 
 msgctxt "model:ir.rule.group,name:rule_group_identifier"
 msgid "Party Identifier Company Rule"
-msgstr ""
+msgstr "Regla identificador de tercero"
 
 msgctxt "model:ir.rule.group,name:rule_group_party"
 msgid "Party Company Rule"
-msgstr ""
+msgstr "Regla tercero"
 
 msgctxt "model:party.company.rel,name:"
 msgid "Party - Company"
-msgstr ""
+msgstr "Tercero - Empresa"
 
 msgctxt "model:res.user-company.company,name:"
 msgid "User - Company"
