@@ -56,39 +56,39 @@ msgstr "Usuari"
 
 msgctxt "model:ir.message,text:can_not_remove_companies"
 msgid "Can not remove companies related on parties."
-msgstr ""
+msgstr "No pot eliminar empreses relacionat amb tercers"
 
 msgctxt "model:ir.rule.group,name:rule_group_address"
 msgid "Address Company Rule"
-msgstr ""
+msgstr "Regla adreça"
 
 msgctxt "model:ir.rule.group,name:rule_group_bank"
 msgid "Bank Company Rule"
-msgstr ""
+msgstr "Regla banc"
 
 msgctxt "model:ir.rule.group,name:rule_group_bank_account"
 msgid "Bank Account Company Rule"
-msgstr ""
+msgstr "Regla compte bancari"
 
 msgctxt "model:ir.rule.group,name:rule_group_carrier"
 msgid "Carrier Company Rule"
-msgstr ""
+msgstr "Regla tercer"
 
 msgctxt "model:ir.rule.group,name:rule_group_contact_mechanism"
 msgid "Contact Mechanism Company Rule"
-msgstr ""
+msgstr "Regla mitjà de contacte"
 
 msgctxt "model:ir.rule.group,name:rule_group_identifier"
 msgid "Party Identifier Company Rule"
-msgstr ""
+msgstr "Regla identificador de tercer"
 
 msgctxt "model:ir.rule.group,name:rule_group_party"
 msgid "Party Company Rule"
-msgstr ""
+msgstr "Regla tercer"
 
 msgctxt "model:party.company.rel,name:"
 msgid "Party - Company"
-msgstr ""
+msgstr "Tercer - Empresa"
 
 msgctxt "model:res.user-company.company,name:"
 msgid "User - Company"
