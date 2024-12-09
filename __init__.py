@@ -2,6 +2,7 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 from trytond.pool import Pool
+from . import configuration
 from . import activity
 from . import bank
 from . import employee
@@ -13,6 +14,8 @@ from . import company
 
 def register():
     Pool.register(
+        configuration.Configuration,
+        configuration.PartyConfigurationCompany,
         employee.Employee,
         party.PartyCompany,
         party.Party,
