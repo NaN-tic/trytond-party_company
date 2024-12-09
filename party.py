@@ -54,11 +54,17 @@ class Party(metaclass=PoolMeta):
                 PartyCompany.save(party_companies)
             table.drop_column('company')
 
-    @staticmethod
-    def default_companies():
-        if Transaction().context.get('company'):
-            return [Transaction().context.get('company')]
-        return []
+    @classmethod
+    def default_companies(cls):
+        Configuration = Pool().get('party.configuration')
+
+        config = Configuration(1)
+        company_ids = [c.id for c in config.default_companies]
+
+        company_id = Transaction().context.get('company')
+        if company_id and company_id > 0 and company_id not in company_ids:
+            company_ids.append(company_id)
+        return company_ids
 
     @classmethod
     def delete(cls, parties):
