@@ -2,21 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:bank,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:bank.account,companies:"
-msgid "Companies"
-msgstr "Empresas"
-
-msgctxt "field:bank.account,owners_by_companies:"
-msgid "Owners"
-msgstr "Titulares"
-
-msgctxt "field:carrier,companies:"
-msgid "Companies"
-msgstr "Empresas"
+msgctxt "field:company.company,allowed_party:"
+msgid "Allowed Party"
+msgstr "Tercero autorizado"
 
 msgctxt "field:party.address,companies:"
 msgid "Companies"
@@ -30,6 +18,18 @@ msgctxt "field:party.company.rel,party:"
 msgid "Party"
 msgstr "Tercero"
 
+msgctxt "field:party.configuration,default_companies:"
+msgid "Default Companies"
+msgstr "Empresas por defecto"
+
+msgctxt "field:party.configuration-company,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.configuration-company,configuration:"
+msgid "Configuration"
+msgstr "Configuración"
+
 msgctxt "field:party.contact_mechanism,companies:"
 msgid "Companies"
 msgstr "Empresas"
@@ -42,9 +42,9 @@ msgctxt "field:party.party,companies:"
 msgid "Companies"
 msgstr "Empresas"
 
-msgctxt "field:res.user,main_companies:"
-msgid "Main Companies"
-msgstr "Empresas principales"
+msgctxt "field:party.party,current_company:"
+msgid "Current Company"
+msgstr "Empresa actual"
 
 msgctxt "field:res.user-company.company,company:"
 msgid "Company"
@@ -54,25 +54,21 @@ msgctxt "field:res.user-company.company,user:"
 msgid "User"
 msgstr "Usuario"
 
+msgctxt "help:party.configuration,default_companies:"
+msgid "Default companies when create a party"
+msgstr "Empresas por defecto al crear el tercero"
+
 msgctxt "model:ir.message,text:can_not_remove_companies"
 msgid "Can not remove companies related on parties."
 msgstr "No se puede eliminar empresas relacionadas con terceros."
 
-msgctxt "model:ir.rule.group,name:rule_group_address"
-msgid "Address Company Rule"
-msgstr "Regla direción empresa"
-
-msgctxt "model:ir.rule.group,name:rule_group_bank"
+msgctxt "model:ir.rule.group,name:"
 msgid "Bank Company Rule"
 msgstr "Regla banco"
 
-msgctxt "model:ir.rule.group,name:rule_group_bank_account"
-msgid "Bank Account Company Rule"
-msgstr "Regla cuenta banco"
-
-msgctxt "model:ir.rule.group,name:rule_group_carrier"
-msgid "Carrier Company Rule"
-msgstr "Regla transportista"
+msgctxt "model:ir.rule.group,name:rule_group_address"
+msgid "Address Company Rule"
+msgstr "Regla direción empresa"
 
 msgctxt "model:ir.rule.group,name:rule_group_contact_mechanism"
 msgid "Contact Mechanism Company Rule"
@@ -89,6 +85,10 @@ msgstr "Regla tercero"
 msgctxt "model:party.company.rel,name:"
 msgid "Party - Company"
 msgstr "Tercero - Empresa"
+
+msgctxt "model:party.configuration-company,name:"
+msgid "Party Configuration Company"
+msgstr "Configuración tercero empresa"
 
 msgctxt "model:res.user-company.company,name:"
 msgid "User - Company"
