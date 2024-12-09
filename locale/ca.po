@@ -68,7 +68,7 @@ msgstr "Regla banc"
 
 msgctxt "model:ir.rule.group,name:rule_group_address"
 msgid "Address Company Rule"
-msgstr "Regla adreça"
+msgstr "Regla adreça empresa"
 
 msgctxt "model:ir.rule.group,name:rule_group_contact_mechanism"
 msgid "Contact Mechanism Company Rule"
