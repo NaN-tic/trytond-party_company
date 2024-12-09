@@ -5,8 +5,9 @@
 from contextlib import contextmanager
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.modules.company.tests import CompanyTestMixin, create_company
+from trytond.pool import Pool, isregisteredby
+from trytond.modules.company.tests import create_company
+from trytond.modules.company.model import CompanyMultiValueMixin
 
 
 @contextmanager
@@ -21,7 +22,44 @@ def set_company(company):
         yield
 
 
-class PartyCompanyTestCase(CompanyTestMixin, ModuleTestCase):
+class PartyCompanyTestMixin:
+
+    @with_transaction()
+    def test_company_multivalue_context(self):
+        "Test context of company multivalue target"
+        pool = Pool()
+        Company = pool.get('company.company')
+        for mname, model in pool.iterobject():
+            # skip rule user company in party.configuration
+            if model.__name__ in ('party.configuration', 'party.configuration-company'):
+                continue
+
+            if (not isregisteredby(model, self.module)
+                    or issubclass(model, Company)):
+                continue
+            company = None
+            for fname, field in model._fields.items():
+                if (field._type == 'many2one'
+                        and issubclass(field.get_target(), Company)):
+                    company = fname
+                    break
+            else:
+                continue
+            for fname, field in model._fields.items():
+                if not hasattr(field, 'get_target'):
+                    continue
+                Target = field.get_target()
+                if not issubclass(Target, CompanyMultiValueMixin):
+                    continue
+                if company in model._fields:
+                    self.assertIn(
+                        'company', list(field.context.keys()),
+                        msg="Missing '%s' value as company "
+                        'in "%s"."%s" context' % (
+                            company, mname, fname))
+
+
+class PartyCompanyTestCase(PartyCompanyTestMixin, ModuleTestCase):
     'Test PartyCompany module'
     module = 'party_company'
     extras = ['bank']
