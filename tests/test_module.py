@@ -6,7 +6,7 @@ from contextlib import contextmanager
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
 from trytond.pool import Pool, isregisteredby
-from trytond.modules.company.tests import create_company
+from trytond.modules.company.tests import CompanyTestMixin, create_company
 from trytond.modules.company.model import CompanyMultiValueMixin
 
 
@@ -22,7 +22,14 @@ def set_company(company):
         yield
 
 
-class PartyCompanyTestMixin:
+class PartyCompanyTestMixin(CompanyTestMixin):
+
+    @property
+    def _skip_company_rule(self):
+        return super()._skip_company_rule | {
+            ('party.configuration', 'company'),
+            ('party.configuration-company', 'company'),
+            }
 
     @with_transaction()
     def test_company_multivalue_context(self):
