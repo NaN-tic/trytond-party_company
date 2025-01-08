@@ -245,7 +245,7 @@ class Party(metaclass=PoolMeta):
                     pc = PartyCompany()
                     pc.party = party
                     pc.company = company
-                    to_create.append(pc._save_values)
+                    to_create.append(pc._save_values())
             if to_create:
                 PartyCompany.create(to_create)
 
