@@ -86,6 +86,11 @@ class Party(metaclass=PoolMeta):
         User = pool.get('res.user')
         user = User(Transaction().user)
 
+        # Return "True" if we have no companies or we have the same company as
+        # user
+        if not self.companies:
+            return True
+
         for company in self.companies:
             if company == user.company:
                 return True
@@ -148,15 +153,19 @@ class Party(metaclass=PoolMeta):
         party_company2 = PartyCompany.__table__()
         without_company = party_company2.select(party_company2.party)
 
+        parties = [x.party.id for x in user.companies]
+
         if clause[1] == '=':
             return ['OR',
                 ('id', 'in', with_company),
                 ('id', 'not in', without_company),
+                ('id', 'in', parties),
                 ]
         elif clause[1] == '!=':
             return [
                 ('id', 'not in', with_company),
                 ('id', 'in', without_company),
+                ('id', 'not in', parties),
                 ]
         return []
 
