@@ -10,7 +10,6 @@ from . import carrier
 from . import galatea
 from . import party
 from . import user
-from . import company
 
 def register():
     Pool.register(
@@ -23,7 +22,6 @@ def register():
         party.PartyIdentifier,
         party.ContactMechanism,
         user.User,
-        company.Company,
         module='party_company', type_='model')
     Pool.register(
         activity.Activity,

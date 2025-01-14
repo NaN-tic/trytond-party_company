@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.action.act_window" id="company.act_company_list">
-            <field name="domain" eval="[('allowed_party', '=', True)]" pyson="1"/>
+            <field name="domain" eval="" pyson="1"/>
         </record>
     </data>
 </tryton>
