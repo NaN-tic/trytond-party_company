@@ -41,7 +41,7 @@ class Company(metaclass=PoolMeta):
             company_table.id,
             where=party_company_table.company==company.id)
         if clause[1] == '=':
-            return ('id', 'in', companies)
+            return [('id', 'in', companies)]
         elif clause[1] == '!=':
-            return ('id', 'not in', companies)
+            return [('id', 'not in', companies)]
         return []

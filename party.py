@@ -173,7 +173,7 @@ class Party(metaclass=PoolMeta):
 
         user = User(Transaction().user)
         if not user.company:
-            return
+            return []
 
         # return parties have not company
         if clause[2] == []:
