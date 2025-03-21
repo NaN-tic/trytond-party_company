@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Can not remove companies related on parties.</field>
         </record>
         <record model="ir.message" id="msg_can_not_remove_model_companies">
-            <field name="text">Can not remove companies which is associated with "%(model)s".</field>
+            <field name="text">Can not remove companies which are associated with "%(model)s".</field>
         </record>
     </data>
 </tryton>
