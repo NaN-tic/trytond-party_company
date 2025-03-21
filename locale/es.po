@@ -60,7 +60,7 @@ msgstr "Empresas por defecto al crear el tercero"
 
 msgctxt "model:ir.message,text:can_not_remove_companies"
 msgid "Can not remove companies related on parties."
-msgstr "No se puede eliminar empresas relacionadas con terceros."
+msgstr "No se pueden eliminar empresas relacionadas con terceros."
 
 msgctxt "model:ir.message,text:msg_can_not_remove_model_companies"
 msgid "Can not remove companies which are associated with \"%(model)s\"."
