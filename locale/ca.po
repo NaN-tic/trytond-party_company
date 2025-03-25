@@ -62,6 +62,10 @@ msgctxt "model:ir.message,text:can_not_remove_companies"
 msgid "Can not remove companies related on parties."
 msgstr "No pot eliminar empreses relacionat amb tercers"
 
+msgctxt "model:ir.message,text:msg_can_not_remove_model_companies"
+msgid "Can not remove companies which are associated with \"%(model)s\"."
+msgstr "No pot eliminar empreses relacionades amb \"%(model)s\"."
+
 msgctxt "model:ir.rule.group,name:"
 msgid "Bank Company Rule"
 msgstr "Regla banc"
