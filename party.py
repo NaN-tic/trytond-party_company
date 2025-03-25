@@ -294,7 +294,7 @@ class Party(metaclass=PoolMeta):
                         ('party', 'in', parties),
                         ('company', 'in', companies),
                         ]):
-                    model, = Model.search([('model', '=', model)], limit=1)
+                    model, = Model.search([('name', '=', model)], limit=1)
                     raise AccessError(
                         gettext('party_company.msg_can_not_remove_model_companies',
                         model=model.rec_name))
