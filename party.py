@@ -9,6 +9,7 @@ from trytond.pyson import Eval
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
+from trytond.model.exceptions import AccessError
 
 
 class Party(metaclass=PoolMeta):
@@ -263,11 +264,40 @@ class Party(metaclass=PoolMeta):
             group_admin = Data.get_id('res', 'group_admin')
             if group_admin not in groups:
                 raise UserError(gettext('party_company.can_not_remove_companies'))
+
+            cls.check_remove_parties_by_company(parties, to_remove)
+
             to_delete = PartyCompany.search([
                 ('party', 'in', parties),
                 ('company', 'in', to_remove),
                 ])
             PartyCompany.delete(to_delete)
+
+    @classmethod
+    def check_models_by_company(cls):
+        return ('sale.sale', 'purchase.purchase', 'account.invoice',
+            'account.move.line')
+
+    @classmethod
+    def check_remove_parties_by_company(cls, parties, companies):
+        pool = Pool()
+        Model = pool.get('ir.model')
+
+        for model in cls.check_models_by_company():
+            try:
+                MModel = pool.get(model)
+            except KeyError:
+                continue
+
+            with Transaction().set_context(_check_access=False):
+                if MModel.search([
+                        ('party', 'in', parties),
+                        ('company', 'in', companies),
+                        ]):
+                    model, = Model.search([('model', '=', model)], limit=1)
+                    raise AccessError(
+                        gettext('party_company.msg_can_not_remove_model_companies',
+                        model=model.rec_name))
 
 
 class PartyCompanyMixin(object):
