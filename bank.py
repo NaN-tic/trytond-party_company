@@ -13,7 +13,7 @@ class Bank(party.PartyCompanyMixin, metaclass=PoolMeta):
 
 class BankAccount(metaclass=PoolMeta):
     __name__ = 'bank.account'
-    companies = fields.Function(fields.One2Many('company.company', None,
+    companies = fields.Function(fields.Many2Many('company.company', None, None,
         'Companies'), 'get_companies', searcher='search_companies')
     owners_by_companies = fields.Function(
         fields.Many2Many('bank.account-party.party', 'account', 'owner',
