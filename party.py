@@ -85,15 +85,21 @@ class Party(metaclass=PoolMeta):
     def get_current_company(self, name):
         pool = Pool()
         User = pool.get('res.user')
-        user = User(Transaction().user)
+        Company = pool.get('company.company')
 
-        # Return "True" if we have no companies or we have the same company as
-        # user
+        user = User(Transaction().user)
+        # If user is the 'root', use the context company, so the root has not
+        # companies set.
+        user_company = (user.company if user.id != 0
+            else Company(Transaction().context.get('company')))
+
+        # Return "True" if we have no companies set in party register
+        # or we have the same company as user
         if not self.companies:
             return True
 
         for company in self.companies:
-            if company == user.company:
+            if company == user_company:
                 return True
         return False
 
@@ -140,7 +146,12 @@ class Party(metaclass=PoolMeta):
         party_company = PartyCompany.__table__()
 
         user = User(Transaction().user)
-        if not user.company:
+        # If user is root, use the context company, so the root has not
+        # companies.
+        user_company = (user.company if user.id != 0
+            else Company(Transaction().context.get('company')))
+
+        if not user_company:
             companies = Company.search([], limit=1)
             # If there are no companies yet, then allow access
             # to all parties
@@ -149,7 +160,7 @@ class Party(metaclass=PoolMeta):
             return [('id', '=', -1)]
 
         with_company = party_company.select(party_company.party,
-            where=party_company.company==user.company.id)
+            where=party_company.company==user_company.id)
 
         party_company2 = PartyCompany.__table__()
         without_company = party_company2.select(party_company2.party)
