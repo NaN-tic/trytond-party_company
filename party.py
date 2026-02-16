@@ -197,7 +197,7 @@ class Party(metaclass=PoolMeta):
             return []
 
         # return parties have not company
-        if clause[2] == []:
+        if clause[2] == [] or clause[2] == ():
             query = party_h.join(party_company,
                 type_='LEFT',
                 condition=party_h.id == party_company.party).select(

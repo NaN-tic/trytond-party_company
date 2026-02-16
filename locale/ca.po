@@ -2,9 +2,29 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:company.company,allowed_party:"
-msgid "Allowed Party"
-msgstr "Tercer autoritzat"
+msgctxt "field:activity.activity,companies:"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "field:bank,companies:"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "field:bank.account,companies:"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "field:bank.account,owners_by_companies:"
+msgid "Owners"
+msgstr "Titulars"
+
+msgctxt "field:carrier,companies:"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "field:galatea.user,companies:"
+msgid "Companies"
+msgstr "Empreses"
 
 msgctxt "field:party.address,companies:"
 msgid "Companies"
@@ -66,17 +86,41 @@ msgctxt "model:ir.message,text:msg_can_not_remove_model_companies"
 msgid "Can not remove companies which are associated with \"%(model)s\"."
 msgstr "No pot eliminar empreses relacionades amb \"%(model)s\"."
 
-msgctxt "model:ir.rule.group,name:"
-msgid "Bank Company Rule"
-msgstr "Regla banc"
+msgctxt "model:ir.rule.group,name:rule_group_activity_activity"
+msgid "Activity Company Rule"
+msgstr "Regla de l'empresa per activitats"
 
 msgctxt "model:ir.rule.group,name:rule_group_address"
 msgid "Address Company Rule"
 msgstr "Regla adreça empresa"
 
+msgctxt "model:ir.rule.group,name:rule_group_bank"
+msgid "Bank Company Rule"
+msgstr "Regla de l'empresa per bancs"
+
+msgctxt "model:ir.rule.group,name:rule_group_bank_account"
+msgid "Bank Account Company Rule"
+msgstr "Regla de l'empresa per els comptes bancaris"
+
+msgctxt "model:ir.rule.group,name:rule_group_carrier"
+msgid "Carrier Company Rule"
+msgstr "Regla de l'empresa per transportistes"
+
+msgctxt "model:ir.rule.group,name:rule_group_commission"
+msgid "Commission Company Rule"
+msgstr "Regla de l'empresa per comissió"
+
+msgctxt "model:ir.rule.group,name:rule_group_commission_agent"
+msgid "Commission Agent Company Rule"
+msgstr "Regla de la companyia agent de comissions"
+
 msgctxt "model:ir.rule.group,name:rule_group_contact_mechanism"
 msgid "Contact Mechanism Company Rule"
 msgstr "Regla mitjà de contacte"
+
+msgctxt "model:ir.rule.group,name:rule_group_galatea_user"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
 
 msgctxt "model:ir.rule.group,name:rule_group_identifier"
 msgid "Party Identifier Company Rule"
@@ -86,17 +130,13 @@ msgctxt "model:ir.rule.group,name:rule_group_party"
 msgid "Party Company Rule"
 msgstr "Regla tercer"
 
-msgctxt "model:party.company.rel,name:"
-msgid "Party - Company"
-msgstr "Tercer - Empresa"
+msgctxt "model:party.company.rel,string:"
+msgid "Party Company Rel"
+msgstr "Tercer Companyia Relacionat"
 
-msgctxt "model:party.configuration-company,name:"
-msgid "Party Configuration Company"
-msgstr "Configuració tercer empresa"
-
-msgctxt "model:res.user-company.company,name:"
-msgid "User - Company"
-msgstr "Usuari - Empresa"
+msgctxt "model:party.configuration-company,string:"
+msgid "Party Configuration - Company"
+msgstr "Configuració del Tercer - Empresa"
 
 msgctxt "view:party.party:"
 msgid "Companies"
