@@ -6,7 +6,6 @@ from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 from trytond.model.exceptions import AccessError
@@ -34,7 +33,7 @@ class Party(metaclass=PoolMeta):
 
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        table = backend.TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         if (table.column_exist('company')):
             sql_where = (sql_table.company != Null)
