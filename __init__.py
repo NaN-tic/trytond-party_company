@@ -30,7 +30,6 @@ def register():
     Pool.register(
         bank.Bank,
         bank.BankAccount,
-        bank.BankAccountNumber,
         depends=['bank'],
         module='party_company', type_='model')
     Pool.register(
