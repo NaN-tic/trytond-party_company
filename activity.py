@@ -10,4 +10,4 @@ class Activity(party.PartyCompanyMixin, metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Activity, cls).__setup__()
-        cls.party.required = True
+        cls.party.states['required'] = True
