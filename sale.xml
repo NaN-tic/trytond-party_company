@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton. The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="sale_product_customer">
+        <record model="ir.rule.group" id="rule_group_sale_product_customer">
+            <field name="name">Product Customer Company Rule</field>
+            <field name="model">sale.product_customer</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_sale_product_customer">
+            <field name="domain" eval="[('party.current_company', '=', True)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_sale_product_customer"/>
+        </record>
+    </data>
+</tryton>
