@@ -226,7 +226,7 @@ class Party(metaclass=PoolMeta):
     def set_companies_field(cls, parties, name, value):
         pool = Pool()
         PartyCompany = pool.get('party.company.rel')
-        Data = pool.get('ir.model.data')
+        User = pool.get('res.user')
 
         party_company = PartyCompany.__table__()
         cursor = Transaction().connection.cursor()
@@ -270,9 +270,7 @@ class Party(metaclass=PoolMeta):
                 PartyCompany.create(to_create)
 
         if to_remove:
-            groups = Transaction().context.get('groups', [])
-            group_admin = Data.get_id('res', 'group_admin')
-            if group_admin not in groups:
+            if not User.is_administrator():
                 raise UserError(gettext('party_company.can_not_remove_companies'))
 
             cls.check_remove_parties_by_company(parties, to_remove)
