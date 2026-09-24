@@ -13,5 +13,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain" eval="['OR', ('companies', 'in', Eval('companies', [])), ('companies', 'in', [])]" pyson="1"/>
             <field name="rule_group" ref="rule_group_carrier"/>
         </record>
+
+        <!-- carrier selection -->
+        <record model="ir.rule.group" id="rule_group_carrier_selection">
+            <field name="name">Carrier Selection Company Rule</field>
+            <field name="model">carrier.selection</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_carrier_selection_companies">
+            <field name="domain" eval="['OR', ('carrier.companies', 'in', Eval('companies', [])), ('carrier.companies', 'in', [])]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_carrier_selection"/>
+        </record>
     </data>
 </tryton>
